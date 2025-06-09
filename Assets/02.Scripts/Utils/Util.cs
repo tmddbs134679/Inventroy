@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Data/PlayerStatData")]
 public class PlayerStatData : ScriptableObject
@@ -13,6 +14,15 @@ public class PlayerStatData : ScriptableObject
     public float Atk;
     public float Def;
     public float Cri;
+}
+
+
+[CreateAssetMenu(menuName = "Data/ItemData")]
+public class ItemData : ScriptableObject
+{
+    public string ItemName;
+    public string Des;
+    public Image image;
 }
 
 public static class Util
