@@ -14,6 +14,7 @@ public class PlayerStat
     public string Des;
     public int Level;
     public int Exp;
+    public float Atk;
     public float MaxHp;
     public float Hp;
     public float Def;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public void InitsStat()
     {
        _playerStat.Name = _playerstatSO.name;
+        _playerStat.Atk = _playerstatSO.Atk;
        _playerStat.Des = _playerstatSO.Des;
        _playerStat.Level = _playerstatSO.Level;
        _playerStat.Hp = _playerstatSO.HP;

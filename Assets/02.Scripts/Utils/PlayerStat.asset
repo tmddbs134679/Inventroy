@@ -19,7 +19,7 @@ MonoBehaviour:
     \uBC30\uBBFC\uC744 \uD0A4\uACE0 \uC788\uB124\uC694"
   Level: 10
   Exp: 9
-  HP: 0
-  Atk: 0
-  Def: 0
-  Cri: 0
+  HP: 100
+  Atk: 25
+  Def: 10
+  Cri: 50
