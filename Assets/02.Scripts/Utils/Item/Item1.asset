@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Item1
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   ItemName: Item1
-  Des: "1\uBC88 \uC544\uC774\uD15C"
-  image: {fileID: 0}
+  Des: "\uC544\uC774\uD15C1"
+  image: {fileID: 21300000, guid: fddfb113c6545f34898d97afdc8f5af7, type: 3}

@@ -25,6 +25,8 @@ public class UI_Status : UI_Popup
 
     public override bool Init()
     {
+        if (base.Init() == false)
+            return false;
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
 

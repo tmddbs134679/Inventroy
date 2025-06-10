@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]UI_MainScene _sceneUI = null;
     public UI_MainScene SceneUI { get { return _sceneUI; } }
+
+    public GameObject ItemObj;
     private void Awake()
     {
         _inst = this;
@@ -91,5 +93,14 @@ public class UIManager : MonoBehaviour
         }
 
     }
- 
+    public T MakeSubItem<T>(Transform parent = null, string name = null) where T : UI_Base
+    {
+        if (string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
+
+        GameObject go = Instantiate(ItemObj);
+
+        go.transform.SetParent(parent, false);
+        return Util.GetOrAddComponent<T>(go);
+    }
 }

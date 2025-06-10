@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class UI_Inventory : UI_Popup
 {
+
+    enum GameObjects
+    {
+        InventoryContentObject,
+    }
     enum Buttons
     {
         BackButton,
@@ -16,6 +21,11 @@ public class UI_Inventory : UI_Popup
 
     public override bool Init()
     {
+        if (base.Init() == false)
+            return false;
+
+
+        BindObject(typeof(GameObjects));
         BindButton(typeof(Buttons));
         GetButton((int)Buttons.BackButton).gameObject.BindEvent(OnClickBackButton);
         gameObject.SetActive(false);
@@ -29,9 +39,23 @@ public class UI_Inventory : UI_Popup
 
     public void SetInfo()
     {
-        //GameManager.Inst.player;
+        Refresh();
+
+        GameObject Container = GetObject((int)GameObjects.InventoryContentObject);
+        List<InventorySlot> Is = GameManager.Inst.player._inventory.items;
+
+        foreach (InventorySlot slot in Is)
+        {
+            UI_EquipItem item = UIManager.Inst.MakeSubItem<UI_EquipItem>(Container.transform);
+            item.SetInfo(slot);
+        }
     }
 
-    
+    private void Refresh()
+    {
+        if (_init == false)
+            return;
 
+        GetObject((int)GameObjects.InventoryContentObject).DestroyChilds();
+    }
 }

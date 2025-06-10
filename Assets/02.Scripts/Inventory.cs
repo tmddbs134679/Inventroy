@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField]private List<InventorySlot> items = new List<InventorySlot>();
-    private void Awake()
+    [SerializeField]public List<InventorySlot> items = new List<InventorySlot>();
+    //private void Awake()
+    //{
+    //    Init();
+    //}
+
+      private void Start()
     {
         Init();
     }
-
     private void Init()
     {
         List<ItemData> defaultItems = GameManager.Inst.defaultPlayerItems;

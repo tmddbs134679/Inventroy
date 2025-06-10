@@ -42,19 +42,13 @@ public class UI_MainMenu : UI_Popup
 
     public override bool Init()
     {
+        if (base.Init() == false)
+            return false;
 
-       // BindObject(typeof(GameObjects));
         BindButton(typeof(Buttons));
-       // BindText(typeof(Texts));
-      //  BindImage(typeof(Images));
 
-        //GetObject((int)GameObjects.InventoryObject).gameObject.SetActive(false);
-        //GetObject((int)GameObjects.StatusObject).gameObject.SetActive(false);
         GetButton((int)Buttons.StatusButton).gameObject.BindEvent(OnClickStatus);
         GetButton((int)Buttons.InventoryButton).gameObject.BindEvent(OnClickInventory);
-
-
-        //GetButton((int)Buttons.BackButton).gameObject.SetActive(false);
         return true;
     }
 

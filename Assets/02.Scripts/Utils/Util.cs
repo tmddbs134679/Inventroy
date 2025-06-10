@@ -24,7 +24,7 @@ public class ItemData : ScriptableObject
 {
     public string ItemName;
     public string Des;
-    public Image image;
+    public Sprite image;
 }
 
 public static class Util
@@ -86,6 +86,19 @@ public static class Ex
     public static void BindEvent(this GameObject go, Action action = null, Action<BaseEventData> dragAction = null, EUIEvent type = EUIEvent.CLICK)
     {
         UI_Base.BindEvent(go, action, dragAction, type);
+    }
+    public static void DestroyChilds(this GameObject go)
+    {
+        Transform[] children = new Transform[go.transform.childCount];
+        for (int i = 0; i < go.transform.childCount; i++)
+        {
+            children[i] = go.transform.GetChild(i);
+        }
+
+        foreach (Transform child in children)
+        {
+            UnityEngine.Object.Destroy(child.gameObject);
+        }
     }
 
 }

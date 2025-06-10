@@ -10,11 +10,14 @@ using UnityEngine.UI;
 public class UI_Base : MonoBehaviour
 {
     protected Dictionary<Type, UnityEngine.Object[]> _objs = new Dictionary<Type, UnityEngine.Object[]>();
-
+    protected bool _init = false;
 
     public virtual bool Init()
     {
+        if (_init)
+            return false;
 
+        _init = true;
         return true;
     }
 
