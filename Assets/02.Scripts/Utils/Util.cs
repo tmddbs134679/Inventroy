@@ -25,6 +25,9 @@ public class ItemData : ScriptableObject
     public string ItemName;
     public string Des;
     public Sprite image;
+    public int AttackBonus;
+    public int DefenceBonus;
+    public int CriticalBonus;
 }
 
 public static class Util

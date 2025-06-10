@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_MainMenu : UI_Popup
 {
@@ -8,9 +9,7 @@ public class UI_MainMenu : UI_Popup
 
     enum GameObjects
     {
-        PlayerObject,
-        StatusObject,
-        InventoryObject,
+        ExpSlider,
     }
     enum Buttons
     {
@@ -24,13 +23,15 @@ public class UI_MainMenu : UI_Popup
     }
 
 
+
+
     enum Texts
     {
         PlayerNameText,
         PlayerLevelText,
         PlayerExpText,
         PlayerDesText,
-        PlayerGoldText,
+     //   PlayerGoldText,
     }
 
     #endregion
@@ -40,15 +41,22 @@ public class UI_MainMenu : UI_Popup
         Init();
     }
 
+    private void Start()
+    {
+        InitPlayerStat();
+    }
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
-
+        BindObject(typeof(GameObjects));
         BindButton(typeof(Buttons));
-
+        BindText(typeof(Texts));
+      
         GetButton((int)Buttons.StatusButton).gameObject.BindEvent(OnClickStatus);
         GetButton((int)Buttons.InventoryButton).gameObject.BindEvent(OnClickInventory);
+
+       
         return true;
     }
 
@@ -66,4 +74,15 @@ public class UI_MainMenu : UI_Popup
         StatusPopupUI.SetInfo();
         StatusPopupUI.gameObject.SetActive(true);
     }
+
+    void InitPlayerStat()
+    {
+        PlayerStat stat = GameManager.Inst.player._playerStat;
+        GetText((int)Texts.PlayerNameText).text = stat.Name;
+        GetText((int)Texts.PlayerLevelText).text = "Lv :" + stat.Level.ToString();
+        GetText((int)Texts.PlayerExpText).text = stat.Exp.ToString();
+        GetText((int)Texts.PlayerDesText).text = stat.Des.ToString();
+        GetObject((int)GameObjects.ExpSlider).GetComponent<Slider>().value = (float)stat.Exp / 10.0f;
+    }
+
 }

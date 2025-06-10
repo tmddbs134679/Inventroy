@@ -28,7 +28,7 @@ public class UI_EquipItem : UI_Base
     {
         this.data = data;
         GetImage((int)Images.EquipmentImage).sprite = data._itemDataSO.image;
-            SetEquip();
+            SetInitEquip();
     }
     public override bool Init()
     {
@@ -46,14 +46,32 @@ public class UI_EquipItem : UI_Base
     private void OnClickEquipItemButton()
     {
         data._isEquipped = !data._isEquipped; 
-        SetEquip();
+        SetEquipStat();
     }
 
-    private void SetEquip()
+    private void SetInitEquip()
     {
         if (data._isEquipped)
             GetObject((int)GameObjects.EquippedObject).SetActive(true);
         else
             GetObject((int)GameObjects.EquippedObject).SetActive(false);
+     
+    }
+
+    private void SetEquipStat()
+    {
+        if (data._isEquipped)
+        {
+            GetObject((int)GameObjects.EquippedObject).SetActive(true);
+            GameManager.Inst.EquipItem(data);
+        }
+          
+        else
+        {
+            GetObject((int)GameObjects.EquippedObject).SetActive(false);
+            GameManager.Inst.UnEquipItem(data);
+        }
+           
+        
     }
 }

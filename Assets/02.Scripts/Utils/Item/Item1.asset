@@ -15,3 +15,6 @@ MonoBehaviour:
   ItemName: Item1
   Des: "\uC544\uC774\uD15C1"
   image: {fileID: 21300000, guid: fddfb113c6545f34898d97afdc8f5af7, type: 3}
+  AttackBonus: 10
+  DefenceBonus: 0
+  CriticalBonus: 0

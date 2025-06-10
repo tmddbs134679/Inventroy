@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     public void InitsStat()
     {
-       _playerStat.Name = _playerstatSO.name;
+       _playerStat.Name = _playerstatSO.playerName;
         _playerStat.Atk = _playerstatSO.Atk;
        _playerStat.Des = _playerstatSO.Des;
        _playerStat.Level = _playerstatSO.Level;
